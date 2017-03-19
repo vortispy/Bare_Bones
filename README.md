@@ -2,28 +2,28 @@
 This is osdev wiki tutorial [Bare Bones](http://wiki.osdev.org/Bare_Bones).
 
 # Build
-##assemble boot.s
+## assemble boot.s
 ```
 $ i686-elf-as boot.s -o boot.o
 ```
 
-##compile kernel.c
+## compile kernel.c
 ```
 $ i686-elf-gcc -c kernel.c -o kernel.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 ```
 
-##linking the kernel
+## linking the kernel
 ```
 $ i686-elf-gcc -T linker.ld -o myos.bin -ffreestanding -O2 -nostdlib boot.o kernel.o -lgcc
 ```
 
-##building a bootable cdrom image
+## building a bootable cdrom image
 ```
 $ cp myos.bin isodir/boot/myos.bin
 $ grub-mkrescue -o myos.iso isodir
 ```
 
-##testing on QEMU
+## testing on QEMU
 ```
 $ qemu-system-i386 -cdrom myos.iso
 ```
